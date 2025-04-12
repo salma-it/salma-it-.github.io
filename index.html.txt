@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Print ALS</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+    body {
+      margin: 0;
+      font-family: 'Press Start 2P', cursive;
+      background-color: #ADD8E6;
+      color: #000080;
+    }
+
+    .logo {
+      display: block;
+      margin: 20px auto;
+      width: 150px;
+    }
+
+    .menu {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: #333;
+      width: 200px;
+      padding: 10px;
+      display: none;
+      flex-direction: column;
+    }
+
+    .menu a {
+      color: white;
+      padding: 10px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .menu a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+
+    .menu-toggle {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: #333;
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .section {
+      display: none;
+      text-align: center;
+      padding: 40px;
+    }
+
+    #inicio {
+      display: block;
+    }
+
+    .social-container a {
+      margin: 10px;
+      text-decoration: none;
+      font-size: 20px;
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+      display: inline-block;
+    }
+
+    .facebook { background-color: #3b5998; }
+    .instagram { background-color: #e4405f; }
+    .twitter { background-color: #1da1f2; }
+    .youtube { background-color: #ff0000; }
+    .tiktok { background-color: #000000; }
+
+    .resaltado {
+      background-color: yellow;
+      font-weight: bold;
+      padding: 2px;
+      border-radius: 4px;
+    }
+
+    .search-box {
+      margin: 20px auto;
+    }
+
+    .search-box input {
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    .search-box button {
+      padding: 10px;
+      font-size: 16px;
+      background-color: #000080;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .banner {
+      width: 100%;
+      overflow: hidden;
+      margin-top: 20px;
+    }
+
+    .banner img {
+      width: 100%;
+      animation: desplazar 20s linear infinite;
+    }
+
+    @keyframes desplazar {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+
+    .carousel-container {
+      position: relative;
+      max-width: 100%;
+      margin: 20px auto;
+      overflow: hidden;
+    }
+
+    .carousel-slide {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      max-width: 100%;
+      flex: 0 0 100%;
+    }
+
+    .carousel-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      font-size: 24px;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .prev { left: 10px; }
+    .next { right: 10px; }
+
+    .pedido-personalizado-btn {
+      margin-top: 30px;
+      padding: 15px 25px;
+      font-size: 16px;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .map-container iframe {
+      width: 100%;
+      max-width: 100%;
+      height: 300px;
+      border: 0;
+    }
+  </style>
+</head>
+<body>
+  <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+  <div class="menu" id="menu">
+    <a href="javascript:mostrarInicio()">Inicio</a>
+    <a href="javascript:mostrarProductos()">Productos</a>
+    <a href="javascript:mostrarOfertas()">Ofertas</a>
+    <a href="javascript:mostrarContacto()">Contacto</a>
+  </div>
+
+  <img src="https://i.postimg.cc/dVgmGb3k/IMG-20250328-WA0004.jpg" alt="Logo de la tienda" class="logo" />
+
+  <div class="banner">
+    <img src="https://i.postimg.cc/CLgHD7kB/Welcome-31-3-2025.jpg" alt="Banner de bienvenida" />
+  </div>
+
+  <!-- INICIO -->
+  <div id="inicio" class="section">
+    <div class="search-box">
+      <input type="text" id="buscador" placeholder="Buscar...">
+      <button onclick="buscarPalabra()">Buscar</button>
+    </div>
+
+    <!-- Carrusel -->
+    <div class="carousel-container">
+      <div class="carousel-slide" id="carousel">
+        <img src="https://i.etsystatic.com/53668288/r/il/ad263a/6190740191/il_794xN.6190740191_n4op.jpg" alt="Imagen 1">
+        <img src="https://i.etsystatic.com/53668288/r/il/53f270/6183362791/il_794xN.6183362791_kf19.jpg" alt="Imagen 2">
+        <img src="https://i.etsystatic.com/36319776/r/il/cb5c52/4462291853/il_794xN.4462291853_fkdr.jpg" alt="Imagen 3">
+        <img src="https://acdn-us.mitiendanube.com/stores/002/750/500/products/post21-9441b2110f604bf2dc16758276210513-1024-1024.webp" alt="Imagen 4">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_615285-MLM48804729491_012022-O.webp" alt="Imagen 5">
+      </div>
+      <button class="carousel-button prev" onclick="moverCarrusel(-1)">❮</button>
+      <button class="carousel-button next" onclick="moverCarrusel(1)">❯</button>
+    </div>
+
+    <!-- Video -->
+    <div style="margin-top: 30px;">
+      <h3>¡Mira nuestro video destacado!</h3>
+      <div style="position: relative; width: 100%; max-width: 360px; margin: 0 auto; padding-bottom: 177.78%; height: 0; overflow: hidden;">
+        <iframe src="https://www.youtube.com/embed/M-Nvg6arfrs" frameborder="0" allowfullscreen
+          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+        </iframe>
+      </div>
+    </div>
+
+    <!-- Mapa -->
+    <div class="map-container" style="margin-top: 40px;">
+      <h3>Nuestra Ubicación</h3>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3930.142593624232!2d-84.10170282403005!3d9.936156990160412!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0e35c5cf7fca9%3A0x741204d7c163308b!2sParque%20Metropolitano%20La%20Sabana!5e0!3m2!1ses-419!2scr!4v1712854922123!5m2!1ses-419!2scr " allowfullscreen="" loading="lazy"></iframe>
+    </div>
+
+    <!-- Audio -->
+    <div class="audio-container">
+      <h3>Visítanos en nuestra tienda presencial</h3>
+      <audio controls>
+        <source src="https://media.vocaroo.com/mp3/17KgGN122eBM" type="audio/mpeg">
+      </audio>
+    </div>
+
+    <!-- Botón personalizado -->
+    <a href="https://salma-it.github.io/" class="pedido-personalizado-btn" target="_blank">
+      Da clic aqui para un pedido personalizado
+    </a>
+  </div>
+
+  <!-- -->
+  <div id="productos" class="section">
+    <h2>Productos</h2>
+    <img src="https://i.etsystatic.com/53668288/r/il/cff0d4/6365442078/il_794xN.6365442078_joe3.jpg" alt="Producto 1">
+    <img src="https://i.etsystatic.com/54165987/r/il/de9cdd/6676071958/il_794xN.6676071958_quq7.jpg" alt="Producto 2">
+    <img src="https://i.etsystatic.com/49375804/r/il/30cb4a/6583938460/il_794xN.6583938460_7gh1.jpg" alt="Producto 3">
+  </div>
+
+  <!-- OFERTAS -->
+  <div id="ofertas" class="section">
+    <h2>Ofertas Especiales</h2>
+    <p>Selecciona una fecha para ver promociones:</p>
+    <input type="date" id="calendar" onchange="mostrarOfertaPorFecha()" />
+    <div id="mensajeOferta" style="margin-top: 20px; font-size: 16px;"></div>
+    <div id="gifOferta" style="margin-top: 20px;"></div>
+  </div>
+
+  <!-- CONTACTO -->
+  <div id="contacto" class="section">
+    <h2>Contáctanos</h2>
+    <p>Envíanos un mensaje directo:</p>
+    <a href="https://wa.me/527731365083" target="_blank">
+      <button style="padding: 15px; background-color: green; color: white; font-size: 16px; border: none; border-radius: 8px;">Contactar por WhatsApp</button>
+    </a>
+    <div class="social-container">
+      <p>Visítanos en nuestras redes sociales</p>
+      <a href="https://www.facebook.com/share/1R3xYgFBp8/" class="facebook">Facebook</a>
+      <a href="https://www.instagram.com/salma.it____?igsh=MWdvajN6NHhuaDB4NA==" class="instagram">Instagram</a>
+      <a href="https://x.com/SalmaU78028?t=c5XQinr-WdwcypJTEX-frQ&s=09" class="twitter">Twitter</a>
+      <a href="https://youtube.com/@salmaugarte?si=JL1x9_ts681Tw0IN" class="youtube">YouTube</a>
+      <a href="https://www.tiktok.com/@salma.it_?_t=ZM-8vS5JCZbK3p&_r=1" class="tiktok">TikTok</a>
+    </div>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("menu");
+      menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
+    }
+
+    function mostrarInicio() {
+      ocultarTodo();
+      document.getElementById("inicio").style.display = "block";
+      window.scrollTo(0, 0);
+    }
+
+    function mostrarProductos() {
+      ocultarTodo();
+      document.getElementById("productos").style.display = "block";
+      window.scrollTo(0, 0);
+    }
+
+    function mostrarOfertas() {
+      ocultarTodo();
+      document.getElementById("ofertas").style.display = "block";
+      window.scrollTo(0, 0);
+    }
+
+    function mostrarContacto() {
+      ocultarTodo();
+      document.getElementById("contacto").style.display = "block";
+      window.scrollTo(0, 0);
+    }
+
+    function ocultarTodo() {
+      document.getElementById("inicio").style.display = "none";
+      document.getElementById("productos").style.display = "none";
+      document.getElementById("ofertas").style.display = "none";
+      document.getElementById("contacto").style.display = "none";
+    }
+
+    function buscarPalabra() {
+      const texto = document.getElementById("buscador").value.toLowerCase().trim();
+      if (!texto) return;
+
+      const prev = document.querySelectorAll(".resaltado");
+      prev.forEach(el => el.outerHTML = el.innerText);
+
+      const rango = document.createRange();
+      const treeWalker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+      let node;
+
+      while (node = treeWalker.nextNode()) {
+        if (node.nodeValue.toLowerCase().includes(texto)) {
+          const index = node.nodeValue.toLowerCase().indexOf(texto);
+          rango.setStart(node, index);
+          rango.setEnd(node, index + texto.length);
+
+          const span = document.createElement("span");
+          span.className = "resaltado";
+          rango.surroundContents(span);
+
+          span.scrollIntoView({ behavior: "smooth", block: "center" });
+          return;
+        }
+      }
+
+      alert("No se encontró esa palabra en la página.");
+    }
+
+    let index = 0;
+    function moverCarrusel(direccion) {
+      const carrusel = document.getElementById("carousel");
+      const total = carrusel.children.length;
+      index = (index + direccion + total) % total;
+      carrusel.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    function mostrarOfertaPorFecha() {
+      const fecha = new Date(document.getElementById("calendar").value);
+      const dia = fecha.getDay();
+
+      const mensajes = [
+        "¡LUNES de comodidad!30% de descuento en todas las playeras básicas ",
+        "MARTES de estilo: 2x1 en camisetas básicas.",
+        "MIÉRCOLES de tendencia: 20% en prendas nuevas. ",
+        "JUEVES: 10% de descuento en compras superiores a $1000.",
+        "VIERNES de regalo: en compras superiores a $2000 una camiseta personalizada de regalo .",
+        "SÁBADO de envío gratis:envio a toda la república Mexicana.",
+        "DOMINGO de locura: 40% en conjuntos y sudaderas."
+      ];
+
+      const gifs = [
+
+     "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgDrjUfcH2AK5TKwYrpCOAU-hdsf4npJC_773xhyphenhyphenAg178ptS73cBiCqHoRAetBWXdBPr8Do_kZvDvij4vb2DVbAJIz0hH2hn49PfGHAakVweIBxze14PnK-7Ma_ziaZ2g5YL7w6at0mkyo/s355/gif+4.gif",
+   "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgDrjUfcH2AK5TKwYrpCOAU-hdsf4npJC_773xhyphenhyphenAg178ptS73cBiCqHoRAetBWXdBPr8Do_kZvDvij4vb2DVbAJIz0hH2hn49PfGHAakVweIBxze14PnK-7Ma_ziaZ2g5YL7w6at0mkyo/s355/gif+4.gif",
+        "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgDrjUfcH2AK5TKwYrpCOAU-hdsf4npJC_773xhyphenhyphenAg178ptS73cBiCqHoRAetBWXdBPr8Do_kZvDvij4vb2DVbAJIz0hH2hn49PfGHAakVweIBxze14PnK-7Ma_ziaZ2g5YL7w6at0mkyo/s355/gif+4.gif",
+        "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgDrjUfcH2AK5TKwYrpCOAU-hdsf4npJC_773xhyphenhyphenAg178ptS73cBiCqHoRAetBWXdBPr8Do_kZvDvij4vb2DVbAJIz0hH2hn49PfGHAakVweIBxze14PnK-7Ma_ziaZ2g5YL7w6at0mkyo/s355/gif+4.gif",
+        "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgDrjUfcH2AK5TKwYrpCOAU-hdsf4npJC_773xhyphenhyphenAg178ptS73cBiCqHoRAetBWXdBPr8Do_kZvDvij4vb2DVbAJIz0hH2hn49PfGHAakVweIBxze14PnK-7Ma_ziaZ2g5YL7w6at0mkyo/s355/gif+4.gif",
+        "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgDrjUfcH2AK5TKwYrpCOAU-hdsf4npJC_773xhyphenhyphenAg178ptS73cBiCqHoRAetBWXdBPr8Do_kZvDvij4vb2DVbAJIz0hH2hn49PfGHAakVweIBxze14PnK-7Ma_ziaZ2g5YL7w6at0mkyo/s355/gif+4.gif",
+        "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgDrjUfcH2AK5TKwYrpCOAU-hdsf4npJC_773xhyphenhyphenAg178ptS73cBiCqHoRAetBWXdBPr8Do_kZvDvij4vb2DVbAJIz0hH2hn49PfGHAakVweIBxze14PnK-7Ma_ziaZ2g5YL7w6at0mkyo/s355/gif+4.gif",
+      ];
+
+      document.getElementById("mensajeOferta").innerText = mensajes[dia];
+      document.getElementById("gifOferta").innerHTML = `<img src="${gifs[dia]}" alt="Oferta del día" style="max-width: 100%; border-radius: 10px;" />`;
+    }
+  </script>
+</body>
+</html>
